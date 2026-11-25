@@ -1,0 +1,941 @@
+//====================CH4 P4==========================================
+public class Sample4_1
+{
+  public static void main (string[] args)
+  {
+    RacingCar rccar1;
+    rccar1 = new RacingCar();
+
+    rccar.setCar(1234,20.5);
+
+    rccar1.setCourse(5);
+  }
+}
+//====================CH4 P6==========================================
+public class Sample4_2
+{
+  public static void main (string[] args)
+  {
+    RacingCar rccar1 = new RacingCar(1234,20.5,5);
+  }
+}
+//====================CH4 P9==========================================
+public class Sample4_3
+{
+  public static void main (string[] args)
+  {
+    RacingCar rccar1;
+    rccar1 = new RacingCar();
+
+    rccar1.newShow();
+  }
+}
+//====================CH4 P11=========================================
+public class Sample4_4
+{
+  public static void main (string[] args)
+  {
+    RacingCar rccar1;
+    rccar1 = new RacingCar();
+
+    rccar.setCar(1234,20.5);
+    rccar1.setCourse(5);
+
+    rccar1.newShow();
+  }
+}
+//====================CH4 P14=========================================
+public class Sample4_5
+{
+  public static void main (string[] args)
+  {
+    Car car1;
+    car1 = new RacingCar();
+
+    car.setCar(1234,20.5);
+
+    car1.newShow();
+  }
+}
+//====================CH4 P17=========================================
+public class Sample4_6
+{
+  public static void main (string[] args)
+  {
+    Car cars[];
+    cars = new Car[2];
+
+    cars[0] = new Car();
+    cars[0].setCar(1234,20.5);
+
+    cars[1] = new RacingCar();
+    cars[1].setCar(4567,30.5);
+
+    for(int i = 0;i < cars.length;i++)
+    {
+      cars[i].show();
+    }
+  }
+}
+//====================CH4 P24=========================================
+public class Sample4_7 {
+    public static void main(String[] args) {
+        Car car1;
+        car1 = new Car();
+
+        car1.setCar(1234, 20.5);
+        System.out.println(car1);
+    }
+}
+
+class Car {
+    protected int num;
+    protected double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("生產了車子");
+    }
+
+    public void setCar(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("將車號設為" + num + ",汽油量設為" + gas);
+    }
+
+    @Override
+    public String toString() {
+        String str = "車號:" + num + ";汽車量:" + gas;
+        return str;
+    }
+}
+//====================CH4 P25=========================================
+public class Sample4_8 {
+    public static void main(String[] args) {
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        Car car3;
+        car3 = car1;
+
+        System.out.println("car1與car2相同" + car1.equals(car2));
+        System.out.println("car1與car3相同" + car1.equals(car3));
+    }
+}
+
+class Car {
+    protected int num;
+    protected double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("生產了車子");
+    }
+}
+//====================CH4 P26=========================================
+public class Sample4_9 {
+    public static void main(String[] args) {
+        Car[] cars;
+        cars = new Car[2];
+
+        cars[0] = new Car();
+        cars[1] = new RacingCar();
+
+        for (int i = 0; i < cars.length; i++) {
+            Class<?> cl = cars[i].getClass();
+            System.out.println("第" + (i + 1) + "個物件的類別是" + cl);
+        }
+    }
+}
+
+class Car {
+    protected int num;
+    protected double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("生產了車子");
+    }
+}
+
+class RacingCar extends Car {
+    public RacingCar() {
+        System.out.println("生產了賽車");
+    }
+}
+//====================CH4 P29=========================================
+public class Sample4_10 {
+    public static void main(String[] args) {
+        Vehicle[] vc = new Vehicle[2];
+
+        vc[0] = new Car(1234, 20.5);
+        vc[0].setSpeed(60);
+
+        vc[1] = new Plane(232);
+        vc[1].setSpeed(500);
+
+        for (int i = 0; i < vc.length; i++) {
+            vc[i].show();
+        }
+    }
+}
+
+abstract class Vehicle {
+    protected int speed;
+
+    public void setSpeed(int s) {
+        speed = s;
+        System.out.println("將速度設為" + speed + "了");
+    }
+
+    abstract void show();
+}
+
+class Car extends Vehicle {
+    private int num;
+    private double gas;
+
+    public Car(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("生產了車號為" + num + ",汽油量為" + gas + "的車子");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+        System.out.println("速度是" + speed);
+    }
+}
+
+class Plane extends Vehicle {
+    private int flight;
+
+    public Plane(int f) {
+        flight = f;
+        System.out.println("生產了" + flight + "班次的飛機");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("飛機的班次是" + flight);
+        System.out.println("速度是" + speed);
+    }
+}
+//====================CH4 P32=========================================
+public class Sample4_11 {
+    public static void main(String[] args) {
+        Vehicle[] vc;
+        vc = new Vehicle[2];
+
+        vc[0] = new Car(1234, 20.5);
+        vc[1] = new Plane(232);
+
+        for (int i = 0; i < vc.length; i++) {
+            if (vc[i] instanceof Car) {
+                System.out.println("第" + (i + 1) + "個物件是Car類別");
+            } else {
+                System.out.println("第" + (i + 1) + "個物件不是Car類別");
+            }
+        }
+    }
+}
+
+abstract class Vehicle {
+    protected int speed;
+
+    public void setSpeed(int s) {
+        speed = s;
+        System.out.println("將速度設為" + speed + "了");
+    }
+
+    abstract void show();
+}
+
+class Car extends Vehicle {
+    private int num;
+    private double gas;
+
+    public Car(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("生產了車號為" + num + ",汽油量為" + gas + "的車子");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+        System.out.println("速度是" + speed);
+    }
+}
+
+class Plane extends Vehicle {
+    private int flight;
+
+    public Plane(int f) {
+        flight = f;
+        System.out.println("生產了" + flight + "班次的飛機");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("飛機的班次是" + flight);
+        System.out.println("速度是" + speed);
+    }
+}
+//====================CH4 P38=========================================
+public class Sample4_12 {
+    public static void main(String[] args) {
+        iVehicle[] ivc;
+        ivc = new iVehicle[2];
+
+        ivc[0] = new Car(1234, 20.5);
+        ivc[1] = new Plane(232);
+
+        for (int i = 0; i < ivc.length; i++) {
+            ivc[i].show();
+        }
+    }
+}
+
+interface iVehicle {
+    int weight = 1000;
+
+    void show();
+}
+
+class Car implements iVehicle {
+    private int num;
+    private double gas;
+
+    public Car(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("生產了車號為" + num + ",汽油量為" + gas + "的車子");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+}
+
+class Plane implements iVehicle {
+    private int flight;
+
+    public Plane(int f) {
+        flight = f;
+        System.out.println("生產了" + flight + "班次的飛機");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("飛機的班次是" + flight);
+    }
+}
+//====================CH4 P41=========================================
+public class Sample4_13 {
+    public static void main(String[] args) {
+        Car car1 = new Car(1234, 20.5);
+        car1.vShow();
+        car1.mShow();
+    }
+}
+
+interface iVehicle {
+    void vShow();
+}
+
+interface iMaterial {
+    void mShow();
+}
+
+class Car implements iVehicle, iMaterial {
+    private int num;
+    private double gas;
+
+    public Car(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("生產了車號為" + num + ",汽油量為" + gas + "的車子");
+    }
+
+    @Override
+    public void vShow() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+
+    @Override
+    public void mShow() {
+        System.out.println("車子的材質是鐵");
+    }
+}
+//====================CH5 P6==========================================
+class Car {
+    private int num;
+    private double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("已生產了汽車");
+    }
+
+    public void setCar(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("將車號設為" + num + "汽油量設為" + gas);
+    }
+
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+}
+
+class Sample5_1 {
+    public static void main(String[] args) {
+        Car car1;
+        car1 = new Car();
+        car1.show();
+    }
+}
+//====================CH5 P8==========================================
+package pa;
+
+class Car {
+    private int num;
+    private double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("已生產了汽車");
+    }
+
+    public void setCar(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("將車號設為" + num + "汽油量設為" + gas);
+    }
+
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+}
+
+package pa;
+
+class Sample5_2 {
+    public static void main(String[] args) {
+        Car car1;
+        car1 = new Car();
+        car1.show();
+    }
+}
+//====================CH5 P10=========================================
+package pc;
+
+public class Car {
+    private int num;
+    private double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("已生產了汽車");
+    }
+
+    public void setCar(int n, double g) {
+        num = n;
+        gas = g;
+        System.out.println("將車號設為" + num + "汽油量設為" + gas);
+    }
+
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+}
+
+package pb;
+
+class Sample5_3 {
+    public static void main(String[] args) {
+        pc.Car car1 = new pc.Car();
+        car1.show();
+    }
+}
+//====================CH5 P14=========================================
+package pb;
+
+import pc.Car;
+
+class Sample5_4 {
+    public static void main(String[] args) {
+        Car car1 = new Car();
+        car1.show();
+    }
+}
+//====================CH5 P19=========================================
+class Sample5_1 {
+    public static void main(String[] args) {
+        int[] test;
+        test = new int[5];
+
+        System.out.println("將值指定給test[10]");
+
+        test[10] = 80;
+        System.out.println("將80指定給test[10]");
+        System.out.println("順利地執行完畢");
+    }
+}
+//====================CH5 P21=========================================
+class Sample5_2 {
+    public static void main(String[] args) {
+        try {
+            int[] test;
+            test = new int[5];
+
+            System.out.println("將值指定給test[10]");
+
+            test[10] = 80;
+            System.out.println("將80指定給test[10]");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("超過陣列的範圍了");
+        }
+
+        System.out.println("順利地執行完畢了");
+    }
+}
+//====================CH5 P24=========================================
+class Sample5_3 {
+    public static void main(String[] args) {
+        try {
+            int[] test;
+            test = new int[5];
+
+            System.out.println("將值指定給test[10]");
+
+            test[10] = 80;
+            System.out.println("將80指定給test[10]");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("超過陣列的範圍了");
+        } finally {
+            System.out.println("最後一定會執行這個處理");
+        }
+
+        System.out.println("順利地執行完畢了");
+    }
+}
+//====================CH5 P26=========================================
+class Sample5_4 {
+    public static void main(String[] args) {
+        try {
+            int[] test;
+            test = new int[5];
+
+            System.out.println("將值指定給test[10]");
+
+            test[10] = 80;
+            System.out.println("將80指定給test[10]");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("超過陣列的範圍了");
+            System.out.println("發生了" + e + "這個例外");
+        } finally {
+            System.out.println("最後一定會執行這個處理");
+        }
+
+        System.out.println("順利地執行完畢了");
+    }
+}
+//====================CH5 P30=========================================
+class CarException extends Exception {
+}
+
+class Car {
+    private int num;
+    private double gas;
+
+    public Car() {
+        num = 0;
+        gas = 0.0;
+        System.out.println("已生產了汽車");
+    }
+
+    public void setCar(int n, double g) throws CarException {
+        if (g < 0) {
+            CarException e = new CarException();
+            throw e;
+        } else {
+            num = n;
+            gas = g;
+            System.out.println("將車號設為" + num + ",汽油量設為" + gas);
+        }
+    }
+
+    public void show() {
+        System.out.println("車號是" + num);
+        System.out.println("汽油量是" + gas);
+    }
+}
+//====================CH5 P32=========================================
+class Sample5_5 {
+    public static void main(String[] args) throws CarException {
+        Car car1;
+        car1 = new Car();
+
+        car1.setCar(1234, -10.0);
+
+        car1.show();
+    }
+}
+//====================CH5 P34=========================================
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class Sample5_6 {
+    public static void main(String[] args) {
+        System.out.println("請輸入字串");
+
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+            String str = br.readLine();
+
+            System.out.println("已輸入字串" + str);
+        } catch (IOException e) {
+            System.out.println("輸入輸出有誤");
+        }
+    }
+}
+//====================CH5 P35=========================================
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+class Sample5_7 {
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("test1.txt");
+            PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
+
+            pw.println("Hello!");
+            pw.println("GoodBye!");
+
+            pw.close();
+            System.out.println("資料已經寫入檔案了");
+        } catch (IOException e) {
+            System.out.println("輸出入錯誤");
+        }
+    }
+}
+//====================CH5 P36=========================================
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+class Sample5_8 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("test1.txt"));
+
+            String str1 = br.readLine();
+            String str2 = br.readLine();
+
+            System.out.println("寫入到檔案中的兩個字串是");
+            System.out.println(str1);
+            System.out.println(str2);
+
+            br.close();
+        } catch (IOException e) {
+            System.out.println("輸出入錯誤");
+        }
+    }
+}
+//====================CH5 P40=========================================
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+class Sample5_9 {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("請指定正確的檔案名稱");
+            System.exit(1);
+        }
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(args[0]));
+
+            String str;
+            while ((str = br.readLine()) != null) {
+                System.out.println(str);
+            }
+
+            br.close();
+        } catch (IOException e) {
+            System.out.println("輸出入錯誤");
+        }
+    }
+}
+//====================CH5 P44=========================================
+class Sample6_1 {
+    public static void main(String[] args) {
+        Car car1 = new Car("1號車");
+        car1.start();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行main()的處理工作");
+        }
+    }
+}
+
+class Car extends Thread {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作");
+        }
+    }
+}
+//====================CH5 P45=========================================
+class Sample6_2 {
+    public static void main(String[] args) {
+        Car car1 = new Car("1號車");
+        car1.start();
+
+        Car car2 = new Car("2號車");
+        car2.start();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行main()的處理工作");
+        }
+    }
+}
+
+class Car extends Thread {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作");
+        }
+    }
+}
+//====================CH5 P46=========================================
+class Sample6_2 {
+    public static void main(String[] args) {
+        Car car1 = new Car("1號車");
+        car1.start();
+
+        Car car2 = new Car("2號車");
+        car2.start();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行main()的處理工作");
+        }
+    }
+}
+
+class Car extends Thread {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作");
+        }
+    }
+}
+//====================CH5 P47=========================================
+class Sample6_4 {
+    public static void main(String[] args) {
+        Car car1 = new Car("1號車");
+        car1.start();
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                Thread.sleep(1000);
+                System.out.println("正在進行main()的處理工作");
+            } catch (InterruptedException e) {
+            }
+        }
+    }
+}
+
+class Car extends Thread {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作");
+        }
+    }
+}
+//====================CH5 P48=========================================
+class Sample6_5 {
+    public static void main(String[] args) {
+        Car car1 = new Car("1號車");
+        car1.start();
+
+        try {
+            car1.join();
+        } catch (InterruptedException e) {
+        }
+
+        System.out.println("結束main()的處理工作。");
+    }
+}
+
+class Car extends Thread {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作。");
+        }
+    }
+}
+//====================CH5 P50=========================================
+class Sample6_6 {
+    public static void main(String[] args) {
+        Car car1 = new Car("一號車");
+        Thread th1 = new Thread(car1);
+        th1.start();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行main()的處理工作");
+        }
+    }
+}
+
+class Car implements Runnable {
+    private String name;
+
+    public Car(String nm) {
+        name = nm;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("正在進行" + name + "的處理工作");
+        }
+    }
+}
+//====================CH5 P52=========================================
+class Sample6_7 {
+    public static void main(String[] args) {
+        Company cmp = new Company();
+
+        Driver drv1 = new Driver(cmp);
+        drv1.start();
+
+        Driver drv2 = new Driver(cmp);
+        drv2.start();
+    }
+}
+
+class Company {
+    private int sum = 0;
+
+    public void add(int a) {
+        int tmp = sum;
+        System.out.println("目前的合計金額是" + tmp + "元");
+        System.out.println("賺到" + a + "元了。");
+        tmp = tmp + a;
+        System.out.println("合計金額是" + tmp + "元");
+        sum = tmp;
+    }
+}
+
+class Driver extends Thread {
+    private Company comp;
+
+    public Driver(Company c) {
+        comp = c;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 3; i++) {
+            comp.add(50);
+        }
+    }
+}
+//====================CH5 P55=========================================
+class Sample6_8 {
+    public static void main(String[] args) {
+        Company cmp = new Company();
+
+        Driver drv1 = new Driver(cmp);
+        drv1.start();
+
+        Driver drv2 = new Driver(cmp);
+        drv2.start();
+    }
+}
+
+class Company {
+    private int sum = 0;
+
+    public synchronized void add(int a) {
+        int tmp = sum;
+        System.out.println("目前的合計金額是" + tmp + "元");
+        System.out.println("賺到" + a + "元了。");
+        tmp = tmp + a;
+        System.out.println("合計金額是" + tmp + "元");
+        sum = tmp;
+    }
+}
+
+class Driver extends Thread {
+    private Company comp;
+
+    public Driver(Company c) {
+        comp = c;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 3; i++) {
+            comp.add(50);
+        }
+    }
+}
